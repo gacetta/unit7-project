@@ -3,16 +3,18 @@ const express = require('express');
 
 // setup express app
 const app = express();
-const path = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
-const publicDir = path.resolve(__dirname, '../public')
-
-// Setup handlebars engine, views and partials locations
+const publicDir = path.resolve(__dirname, '../public');
 
 // Setup static directory to serve
+app.use(express.static(publicDir));
 
 //route handlers
+app.get('/test', (req, res) => {
+  res.json('Hello, express!')
+})
 
 //listener
 app.listen(port, () => {
