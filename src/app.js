@@ -5,18 +5,20 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Define paths for Express config
-const publicDir = path.resolve(__dirname, '../public');
+// set publicDir for express config
+const publicDir = path.resolve(__dirname, '../public')
 
-// Setup static directory to serve
+// setup express static views
 app.use(express.static(publicDir));
 
-//route handlers
-app.get('/test', (req, res) => {
-  res.json('Hello, express!')
+// route handlers
+app.get('/greet', (req,res) => {
+  res.json({
+    message: 'Hello, express!'
+  })
 })
 
-//listener
+// setup app.listen
 app.listen(port, () => {
-  console.log(`server is up on port ${port}`)
-});
+  console.log(`server is up and running on port ${port}`)
+})

@@ -1,17 +1,15 @@
-console.log('client side JS is up and running')
+console.log('client side JS is up and running');
 
-const button = document.querySelector('button');
-const responseEl = document.querySelector('#response')
+const buttonEl = document.querySelector('button');
+const buttonResponseEl = document.querySelector('#button-response');
 
-button.addEventListener('click', (e) => {
-  e.preventDefault;
+buttonEl.addEventListener('click', (e) => {
 
-  responseEl.textContent = '';
-  
-  fetch('/test').then((response) => {
+  buttonResponseEl.textContent = '...Loading';
+
+  fetch('/greet').then((response) => {
     response.json().then((data) => {
-      responseEl.textContent = data;
+      buttonResponseEl.textContent = data.message;
     })
   })
-
 })
